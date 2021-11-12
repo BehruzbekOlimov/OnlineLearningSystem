@@ -21,13 +21,11 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("register")
-    @PreAuthorize("permitAll()")
     UserWithJwtResponse register(@Valid @RequestBody UserRegisterRequest req) {
         return authService.register(req);
     }
 
-    @PostMapping("signIn")
-    @PreAuthorize("permitAll()")
+    @PostMapping("sign-in")
     UserWithJwtResponse signIn(@Valid @RequestBody UserAuthRequest req) {
         return authService.auth(req);
     }

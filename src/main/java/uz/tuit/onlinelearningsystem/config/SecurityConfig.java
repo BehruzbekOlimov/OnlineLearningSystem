@@ -15,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import uz.tuit.onlinelearningsystem.config.jwt.JwtFilter;
+import uz.tuit.onlinelearningsystem.entity.enums.Role;
 import uz.tuit.onlinelearningsystem.service.AuthService;
 
 @Configuration
@@ -49,6 +50,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/swagger-ui/**",
                         "/webjars/**")
                 .permitAll()
+                .antMatchers(HttpMethod.POST, "/api/auth/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/course/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/course/**").hasAnyAuthority(Role.TEACHER.name())
                 .anyRequest().authenticated();
 
         http.addFilterBefore(jwtFilter(), UsernamePasswordAuthenticationFilter.class);
