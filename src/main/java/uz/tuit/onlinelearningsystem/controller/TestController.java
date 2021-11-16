@@ -19,8 +19,7 @@ public class TestController {
     private final AuthService authService;
 
     @GetMapping("test1")
-    @PreAuthorize("permitAll()")
-    ResponseEntity<PageAttributesRequest> test1(@Valid @RequestAttribute PageAttributesRequest req) {
+    ResponseEntity<?> test1(@Valid @ModelAttribute PageAttributesRequest req) {
         return ResponseEntity.ok(req);
     }
 
