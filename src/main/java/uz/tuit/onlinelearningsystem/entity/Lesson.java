@@ -19,5 +19,6 @@ public class Lesson extends RootEntity {
     @Column(length = 64)
     private String name;
 
+    private String text;
     private Integer orderNumber;
 }

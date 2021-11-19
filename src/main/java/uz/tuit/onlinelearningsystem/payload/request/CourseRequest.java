@@ -11,9 +11,9 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @Data
 public class CourseRequest {
-    @Size(min = 3,max = 32)
-    @NotNull
-    private String description;
     @Size(max = 255)
+    private String description;
+    @NotNull
+    @Size(min = 3,max = 32)
     private String name;
 }
