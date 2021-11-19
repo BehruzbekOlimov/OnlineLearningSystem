@@ -16,4 +16,6 @@ public class PageAttributesRequest {
     @Min(value = 1)
     @Max(value = 200)
     private Integer size=10;
+    private String sortBy = "id";
+    private Boolean ascending = true;
 }

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import uz.tuit.onlinelearningsystem.entity.Course;
 import uz.tuit.onlinelearningsystem.payload.request.CourseRequest;
+import uz.tuit.onlinelearningsystem.payload.request.PageAttributesRequest;
 import uz.tuit.onlinelearningsystem.payload.response.PageableResponse;
 import uz.tuit.onlinelearningsystem.service.CourseService;
 
@@ -27,7 +28,7 @@ public class CourseController {
     }
 
     @GetMapping("all")
-    PageableResponse<Course> getAll(){
-        return courseService.getAll();
+    PageableResponse<Course> getAll(@Valid @ModelAttribute PageAttributesRequest request){
+        return courseService.getAll(request);
     }
 }

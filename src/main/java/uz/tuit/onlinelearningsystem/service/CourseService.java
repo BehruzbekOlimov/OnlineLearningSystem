@@ -10,8 +10,10 @@ import org.springframework.web.server.ResponseStatusException;
 import uz.tuit.onlinelearningsystem.entity.Course;
 import uz.tuit.onlinelearningsystem.entity.User;
 import uz.tuit.onlinelearningsystem.payload.request.CourseRequest;
+import uz.tuit.onlinelearningsystem.payload.request.PageAttributesRequest;
 import uz.tuit.onlinelearningsystem.payload.response.PageableResponse;
 import uz.tuit.onlinelearningsystem.repository.CourseRepository;
+import uz.tuit.onlinelearningsystem.utils.CommonUtils;
 
 import java.util.UUID;
 
@@ -36,9 +38,9 @@ public class CourseService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    public PageableResponse<Course> getAll() {
+    public PageableResponse<Course> getAll(PageAttributesRequest pageRequest) {
         PageableResponse<Course> response = new PageableResponse<>();
-        Page<Course> page = courseRepository.findAll(PageRequest.of(0, 100));
+        Page<Course> page = courseRepository.findAll(CommonUtils.getPageRequest(pageRequest));
         response.setData(page.getContent());
         response.setCountItems(page.getTotalElements());
         return response;
