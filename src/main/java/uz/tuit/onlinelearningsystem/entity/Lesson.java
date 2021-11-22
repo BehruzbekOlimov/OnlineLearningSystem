@@ -28,9 +28,8 @@ public class Lesson extends RootEntity {
     @Enumerated(EnumType.STRING)
     private TypeRate typeRate;
     private Integer orderNumber;
-    private Integer countTest;
+    private Integer countTest=0;
     private Integer maxAttempts=Integer.MAX_VALUE;
-    private Integer totalAttempts=0;
 
     @Transient
     private Quiz quiz;

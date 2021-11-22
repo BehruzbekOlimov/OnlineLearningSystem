@@ -5,10 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import uz.tuit.onlinelearningsystem.entity.template.RootEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Table(name = "test")
@@ -20,6 +17,7 @@ public class Test extends RootEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Lesson lesson;
+    @Column(length = 1024)
     private String question;
     private String answer;
     private String variant_b;

@@ -1,31 +1,27 @@
 package uz.tuit.onlinelearningsystem.controller;
 
 import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import uz.tuit.onlinelearningsystem.payload.request.PageAttributesRequest;
-import uz.tuit.onlinelearningsystem.payload.request.UserAuthRequest;
-import uz.tuit.onlinelearningsystem.payload.response.UserWithJwtResponse;
-import uz.tuit.onlinelearningsystem.service.AuthService;
+import uz.tuit.onlinelearningsystem.entity.Test;
+import uz.tuit.onlinelearningsystem.payload.request.TestRequest;
 
 import javax.validation.Valid;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/test/")
 @AllArgsConstructor
 public class TestController {
 
-    private final AuthService authService;
+    @PostMapping("save")
+    Test create(@Valid @RequestBody TestRequest request){
 
-    @GetMapping("test1")
-    ResponseEntity<?> test1(@Valid @ModelAttribute PageAttributesRequest req) {
-        return ResponseEntity.ok(req);
+        return null;
+    }
+    @GetMapping("{id}")
+    Test getOne(@PathVariable UUID id){
+
+        return null;
     }
 
-    @PostMapping("test2")
-    @PreAuthorize("permitAll()")
-    UserWithJwtResponse signIn(@Valid @RequestBody UserAuthRequest req) {
-        return authService.auth(req);
-    }
 }

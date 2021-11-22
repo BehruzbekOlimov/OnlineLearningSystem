@@ -26,4 +26,5 @@ public class Quiz extends RootEntity {
 
     @Enumerated(EnumType.STRING)
     private QuizStatus status;
+    private Integer totalAttempts=0;
 }
