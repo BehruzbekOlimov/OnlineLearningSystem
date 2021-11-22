@@ -21,17 +21,23 @@ public class Course extends RootEntity {
     @JoinColumn(nullable = false)
     private User teacher;
 
-    @Column(length = 32, nullable = false)
+    @Column(length = 128, nullable = false)
     private String name;
+
+    @Column(length = 128, nullable = false)
+    private String slugName;
 
     @Transient
     @OneToMany(fetch = FetchType.LAZY)
     private Set<Subscriptions> subscriptions;
 
     @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.REMOVE)
-    private Set<Lesson> lessons;
+    private Set<Section> sections;
 
     @Column(length = 16)
     @Enumerated(EnumType.STRING)
     private CourseStatus status = CourseStatus.BEING_CREATE;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    private Photo photo;
 }

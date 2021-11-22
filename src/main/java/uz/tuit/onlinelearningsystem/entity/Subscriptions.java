@@ -20,5 +20,7 @@ public class Subscriptions extends RootEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private User student;
 
-    private byte rate;
+    private Float totalScore;
+
+    private Byte rate;
 }

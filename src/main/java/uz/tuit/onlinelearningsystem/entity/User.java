@@ -47,8 +47,11 @@ public class User extends RootEntity implements UserDetails {
     private Role role = Role.STUDENT;
 
     @Transient
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     private Set<Subscriptions> subscriptions;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    private Photo photo;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
