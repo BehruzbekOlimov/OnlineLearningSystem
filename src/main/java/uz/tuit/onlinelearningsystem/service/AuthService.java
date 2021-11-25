@@ -42,6 +42,9 @@ public class AuthService implements UserDetailsService {
         user.setFirstName(req.getFirstName());
         user.setAddress(req.getAddress());
         user.setPhoneNumber(req.getPhoneNumber());
+        User match = userRepository.findByUsername(req.getUsername().trim()).orElse(null);
+        if (match != null)
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Current username is already exists");
         user.setUsername(req.getUsername().trim());
         user.setPassword(passwordEncoder.encode(req.getPassword()));
 
