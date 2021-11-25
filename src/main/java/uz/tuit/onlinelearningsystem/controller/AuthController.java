@@ -1,11 +1,8 @@
 package uz.tuit.onlinelearningsystem.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import uz.tuit.onlinelearningsystem.entity.User;
 import uz.tuit.onlinelearningsystem.payload.request.UserAuthRequest;
 import uz.tuit.onlinelearningsystem.payload.request.UserRegisterRequest;
 import uz.tuit.onlinelearningsystem.payload.response.UserWithJwtResponse;
@@ -16,6 +13,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/api/auth/")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class AuthController {
 
     private final AuthService authService;
@@ -28,6 +26,11 @@ public class AuthController {
     @PostMapping("sign-in")
     UserWithJwtResponse signIn(@Valid @RequestBody UserAuthRequest req) {
         return authService.auth(req);
+    }
+
+    @GetMapping("get-me")
+    User getMe(){
+        return authService.getMe();
     }
 
 }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import uz.tuit.onlinelearningsystem.entity.template.RootEntity;
 
 import javax.persistence.*;
@@ -29,4 +30,15 @@ public class Photo extends RootEntity {
     @JsonIgnore
     private Attachment thumbnailAttachment;
 
+    public String getUrl() {
+        return ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path(url)
+                .toUriString();
+    }
+
+    public String getThumbnailUrl() {
+        return ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path(thumbnailUrl)
+                .toUriString();
+    }
 }

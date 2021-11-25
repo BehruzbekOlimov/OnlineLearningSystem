@@ -48,7 +48,7 @@ public class PhotoService {
         );
         InputStream inputStream = new ByteArrayInputStream(file.getBytes());
         BufferedImage bufferedImage = ImageIO.read(inputStream);
-        bufferedImage = Scalr.resize(bufferedImage, 500);
+        bufferedImage = Scalr.resize(bufferedImage, 400);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         if (Objects.equals(file.getContentType(), "image/png"))
             ImageIO.write(bufferedImage, "png", baos);

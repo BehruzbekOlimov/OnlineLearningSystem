@@ -23,12 +23,10 @@ public class Lesson extends RootEntity {
 
     @Column(length = 10240)
     private String content;
-//    private Long quizMaxTime;
     @Column(length = 16)
     @Enumerated(EnumType.STRING)
     private TypeRate typeRate;
     private Integer orderNumber;
-    private Integer countTest=0;
     private Integer maxAttempts=Integer.MAX_VALUE;
 
     @Transient
